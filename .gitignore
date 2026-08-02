@@ -1,0 +1,11 @@
+# Arquivos gerados pelo Home Assistant (nunca versionar)
+config/home-assistant.log
+config/secrets.yaml
+config/.storage/
+config/*.db
+config/*.sqlite*
+*.log
+
+# Camada de IA local (não poluir o Pi)
+.opencode/
+AGENTS.md
