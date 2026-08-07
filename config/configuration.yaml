@@ -16,3 +16,18 @@ template:
         unit_of_measurement: "h"
         device_class: duration
         state: "{{ (states('sensor.s23_michel_sleep_duration') | float(0) / 60) | round(2) }}"
+
+switch:
+  - platform: template
+    switches:
+      computador:
+        friendly_name: "Computador"
+        value_template: "{{ is_state_attr('media_player.echo_quarto', 'source', 'DESKTOP-6QCLLTO') }}"
+        turn_on:
+          action: button.press
+          target:
+            entity_id: button.wake_on_lan_c8_7f_54_63_36_c2
+        turn_off:
+          action: switch.turn_on
+          target:
+            entity_id: switch.shell_desligar_computador
