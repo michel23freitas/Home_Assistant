@@ -16,13 +16,10 @@ template:
         unit_of_measurement: "h"
         device_class: duration
         state: "{{ (states('sensor.s23_michel_sleep_duration') | float(0) / 60) | round(2) }}"
-
-switch:
-  - platform: template
-    switches:
-      computador:
-        friendly_name: "Computador"
-        value_template: "{{ is_state_attr('media_player.echo_quarto', 'source', 'DESKTOP-6QCLLTO') }}"
+  - switch:
+      - name: "Computador"
+        unique_id: computador
+        state: "{{ is_state_attr('media_player.echo_quarto', 'source', 'DESKTOP-6QCLLTO') }}"
         turn_on:
           action: button.press
           target:
